@@ -31,15 +31,15 @@ Atgp <- data[,c("Atgp_1", "Atgp_2", "Atgp_3", "Atgp_4", "Atgp_5") ]
 greenPB <- data[,c("greenPB_1", "greenPB_2", "greenPB_3", "greenPB_4", "greenPB_5") ]
 Pek <- data[,c("Pek_1", "Pek_2", "Pek_3", "Pek_4") ]
 
-# Gender frequencies
+#Gender frequencies
 table(data$Gender)
 prop.table(table(data$Gender)) * 100  # For percentages
 
-# Country frequencies
+#Country frequencies
 table(data$Country)
 prop.table(table(data$Country)) * 100  # For percentages
 
-# Create age groups
+#Create age groups
 data$AgeGroup <- cut(data$Age, 
                      breaks = c(0, 18, 25, 35, 45, 55, Inf),
                      labels = c("Under 18", "18-25", "26-35", "36-45", "46-55", "56+"),
@@ -47,7 +47,7 @@ data$AgeGroup <- cut(data$Age,
 age_freq <- table(data$AgeGroup)
 print(age_freq)
 
-# Percentage table for age
+#Percentage table for age
 age_percent <- prop.table(age_freq) * 100
 print(age_percent)
 
@@ -162,7 +162,7 @@ summary_stats <- data %>%
     Max = max(Scep, na.rm = TRUE)
   )
 
-# View the summary statistics
+#View the summary statistics
 print(summary_stats) #Keep changing the variable
 
 
@@ -186,7 +186,7 @@ get_anova_results <- function(anova_model) {
   
   eta_squared <- sum_sq_between / total_sum_sq
   
-  # Create a data frame
+  #Create a data frame
   result <- data.frame(
     `Sum of Squares` = c(sum_sq_between, sum_sq_within, total_sum_sq),
     df = c(df_between, df_within, total_df),
@@ -196,13 +196,13 @@ get_anova_results <- function(anova_model) {
     `Coefficient (Eta-squared)` = c(eta_squared, NA, NA)
   )
   
-  # Name the rows
+  #Name the rows
   rownames(result) <- c("Between Groups", "Within Groups", "Total")
   
   return(result)
 }
 
-# Apply the function to each ANOVA model
+#Apply the function to each ANOVA model
 
 env_concern_results <- get_anova_results(anova_env_concern)
 env_concern_results
@@ -225,7 +225,7 @@ env_knowledge_results
 
 anova_Scep <- aov(Scep ~ factor(Interventions), data = data)
 
-# Summary of the ANOVA
+#Summary of the ANOVA
 summary(anova_SKEP)
 TukeyHSD(anova_SKEP)
 
@@ -274,7 +274,7 @@ abline(h = 0, col = "red")
 model4 <- lm(Scep ~ Envcon + Pek + greenPB + Atgp, data=data)
 vif_values4 <- vif(model4)
 
-# Print the VIF values
+#Print the VIF values
 print(vif_values4)
 
 shapiro.test(data$Scep)
