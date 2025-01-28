@@ -6,6 +6,7 @@ This dissertation examined the impact of positive framing (intervention 1), gree
 
 
  # R Code used for analysis
+```R
 
 library(fastDummies)
 
@@ -449,7 +450,7 @@ ab_boxcox <- (ab^lambda - 1) / lambda
 
 shapiro.test(ab_boxcox)
 
-
+```
 
 
 
