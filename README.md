@@ -59,7 +59,7 @@ print(green_percent)
 
 #Factor analysis
 model <- '
-  # Latent variables
+  #Latent variables
   env_concern =~ Envcon_1 + Envcon_2 + Envcon_3 + Envcon_4 + Envcon_5
   green_skepticism =~ Scep_1 + Scep_2 + Scep_3 + Scep_4 + Scep_5
   attitude_green_products =~ Atgp_1 + Atgp_2 + Atgp_3 + Atgp_4 + Atgp_5
